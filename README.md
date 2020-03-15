@@ -5,7 +5,7 @@ This is a step by step guide to setup our favourite sublime text for competitive
 Let's setup our sublime with an example programming language (our old school: C++)
 ### Step 1: Create build system
 open "Tools > Build System > New Build System" and copy-paste below command
-```
+'''json
 {
 	"shell_cmd": "g++ -std=c++17 \"${file}\" && \"${file_path}/a.out\"",
 	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
@@ -24,5 +24,5 @@ open "Tools > Build System > New Build System" and copy-paste below command
 		}
 	]
 }
-```
+'''
 //Incomplete
