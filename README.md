@@ -7,7 +7,7 @@ Let's setup our sublime with an example programming language (our old school: C+
 open "Tools > Build System > New Build System" and copy-paste below command
 ```sublime-build
 {
-	"shell_cmd": "g++ \"${file}\" -o \"${file_path}/${file_base_name}\"",
+	"shell_cmd": "g++ -std=c++17 \"${file}\" && \"${file_path}/a.out\"",
 	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
 	"working_dir": "${file_path}",
 	"selector": "source.c++, source.cpp, source.cc, source.cxx",
@@ -16,7 +16,11 @@ open "Tools > Build System > New Build System" and copy-paste below command
 	[
 		{
 			"name": "Run I/O",
-			"shell_cmd": "g++ \"${file}\" -o \"${file_path}/${file_base_name}\" && ${file_path}/${file_base_name}<${file_path}/input.txt>${file_path}/output.txt"
+			"shell_cmd": "g++ -std=c++17 \"${file}\" && \"${file_path}/a.out\"<\"${file_path}/input\""
+		},
+		{
+			"name": "Run in Terminal",
+			"shell_cmd": "g++ -std=c++17 \"${file}\" && gnome-terminal -- bash -c \"${file_path}/a.out && echo && echo Press ENTER to EXIT && read line && exit\""
 		}
 	]
 }
